@@ -44,7 +44,7 @@ files:
   - source: /app/src/main/res/values/strings.xml
     translation: /app/src/main/res/values-%android_code%/%original_file_name%
     languages_mapping:
-      locale:
+      android_code:
         en-US: en-rUS
         en-AU: en-rAU
         en: en
