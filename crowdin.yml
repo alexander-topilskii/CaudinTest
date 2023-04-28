@@ -37,14 +37,17 @@ export_languages:
   - bn-IN
   - ur-PK
 
+languages_mapping: &anchor
+  android_code:
+    en-US: en-rUS
+    en-AU: en-rAU
+    en: en
+
 # dest отвечает за иерархию в crowdin, работает только для одного файла
 # https://support.crowdin.com/configuration-file/#uploading-files-to-specified-path-with-specified-type
 # Crowdin не поддерживает yaml anchor
 files:
   - source: /app/src/main/res/values/strings.xml
     translation: /app/src/main/res/values-%android_code%/%original_file_name%
-    languages_mapping:
-      locale:
-        en-US: en-rUS
-        en-AU: en-rAU
-        en: en
+    languages_mapping: *anchor
+
