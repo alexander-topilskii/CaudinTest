@@ -11,31 +11,6 @@ base_url: "https://api.crowdin.com"
 # Надо смотреть на список https://crowdin.com/project/indriver-android/settings#translations
 # Сопоставить коды к языкам можно здесь - https://support.crowdin.com/api/language-codes/
 # https://api.crowdin.com/api/supported-languages
-export_languages:
-  - uk
-  - en-US
-  - en-AU
-  - en
-  - ru
-  - es-MX
-  - pt-BR
-  - fr
-  - fil
-  - id
-  - hi
-  - ar
-  - th
-  - vi
-  - lo
-  - ms
-  - az
-  - km
-  - ne-NP
-  - ka
-  - tr
-  - kk
-  - bn-IN
-  - ur-PK
 
 languages_mapping: &anchor
   android_code:
