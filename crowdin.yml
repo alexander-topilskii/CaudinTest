@@ -1,0 +1,45 @@
+# Страница проекта в Crowdin https://crowdin.com/project/indriver-android
+#
+# Документация по работе с Crowdin:
+# https://indriver.atlassian.net/wiki/spaces/AD/pages/1208418324/Crowdin
+preserve_hierarchy: 1
+base_path: .
+project_id: "584203"
+base_url: "https://api.crowdin.com"
+
+# Параметр влияет на конечный список переводов
+# Надо смотреть на список https://crowdin.com/project/indriver-android/settings#translations
+# Сопоставить коды к языкам можно здесь - https://support.crowdin.com/api/language-codes/
+# https://api.crowdin.com/api/supported-languages
+export_languages:
+  - uk
+  - en-US
+  - en-AU
+  - en
+  - ru
+  - es-MX
+  - pt-BR
+  - fr
+  - fil
+  - id
+  - hi
+  - ar
+  - th
+  - vi
+  - lo
+  - ms
+  - az
+  - km
+  - ne-NP
+  - ka
+  - tr
+  - kk
+  - bn-IN
+  - ur-PK
+
+# dest отвечает за иерархию в crowdin, работает только для одного файла
+# https://support.crowdin.com/configuration-file/#uploading-files-to-specified-path-with-specified-type
+# Crowdin не поддерживает yaml anchor
+files:
+  - source: /app/src/main/res/values/strings.xml
+    translation: /app/src/main/res/values-%android_code%/%original_file_name%

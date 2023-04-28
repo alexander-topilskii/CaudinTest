@@ -1,0 +1,73 @@
+name: crowdin action
+# Actions for download translation and make PR
+# PR will be updated if several runs of actions
+# Choose you branch name for PR for test and CI checks
+# Choose language for downloading
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "Task id in Jira for {{task}} PR for translations. Example: USA-338. This applies to branch name, PR title, commit message."
+        type: string
+        required: true
+        default: ''
+      language:
+        description: "Select language for download. Leave empty for all languages"
+        type: choice
+        # Match crowdin.yml for export
+        options:
+          - ""
+          - "uk"
+          - "ru"
+          - "es-MX"
+          - "pt-BR"
+          - "fr"
+          - "fil"
+          - "id"
+          - "hi"
+          - "ar"
+          - "th"
+          - "vi"
+          - "lo"
+          - "ms"
+          - "az"
+          - "km"
+          - "ne-NP"
+          - "ka"
+          - "tr"
+          - "kk"
+          - "bn-IN"
+          - "ur-PK"
+          - "en"
+          - "en-US"
+          - "en-AU"
+
+
+jobs:
+  synchronize-with-crowdin:
+    runs-on: [ubuntu-latest]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: crowdin action
+        uses: crowdin/github-action@v1
+        with:
+          # crowdin options
+          download_translations: true
+          download_language: ${{ github.event.inputs.language }}
+          localization_branch_name: 'l10n-crowdin-action-${{ github.event.inputs.task }}'
+          # pr options
+          create_pull_request: true
+          pull_request_title: '${{ github.event.inputs.task }} - New Crowdin translations for language ${{ github.event.inputs.language }}'
+          pull_request_body: 'New Crowdin pull request with translations'
+          pull_request_labels: 'translations'
+          pull_request_base_branch_name: dev
+          commit_message: '${{ github.event.inputs.task }} New Crowdin translations ${{ github.event.inputs.language }} by Github Action'
+          # global options
+          token: b638705fa587af76d6d9632f0120219d0b2d75d0c7dc45851885284121eb56bc5adb5fa9add9428a
+          crowdin_branch_name: dev
+          config: 'crowdin.yml'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
