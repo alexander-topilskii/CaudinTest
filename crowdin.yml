@@ -43,7 +43,8 @@ export_languages:
 files:
   - source: /app/src/main/res/values/strings.xml
     translation: /app/src/main/res/values-%android_code%/%original_file_name%
-    locale:
-      en-US: en-rUS
-      en-AU: en-rAU
-      en: en
+    languages_mapping:
+      locale:
+        en-US: en-rUS
+        en-AU: en-rAU
+        en: en
